@@ -1,0 +1,41 @@
+CC = g++
+CFLAGS = -O2
+#CFLAGS = -d
+RM= rm -f
+BIN= ../bin/
+ENTRY2FST_LIB= ../dafst/lib/libentry2fst.a 
+PROBABILITY_TOOL_LIB= ../probability_tools/lib/libprobability_tool.a
+HSPLIT_LIB= ../hsplit/lib/libhsplit.a
+
+CP= cp
+.cpp.o: 
+	$(CC) -c $(CFLAGS) $<
+
+all: 	komatag_learn
+
+komatag_learn: komatag_learner.o \
+               prokoma_learn_e.o neohantag_learn.o \
+               me_neohantag_learn.o \
+               morpheme_tagging.o syllable_tagging.o \
+               prokoma_learn_m.o phonetic_info.o \
+               tool_pos_tagged_corpus.o prokoma_learn_s.o \
+               global_option.o report.o get_sentence.o \
+               extract_frequency.o
+	$(CC) -o $(BIN)$@ komatag_learner.o \
+               prokoma_learn_e.o neohantag_learn.o \
+               me_neohantag_learn.o \
+               morpheme_tagging.o syllable_tagging.o \
+               prokoma_learn_m.o phonetic_info.o \
+               tool_pos_tagged_corpus.o prokoma_learn_s.o \
+               global_option.o report.o get_sentence.o \
+               extract_frequency.o \
+               $(ENTRY2FST_LIB) \
+  	       $(PROBABILITY_TOOL_LIB) \
+	       $(HSPLIT_LIB)
+clean: 	rmobj rmbin
+
+rmobj:
+	${RM} *.o 
+
+rmbin:
+	${RM} $(BIN)komatag_learn

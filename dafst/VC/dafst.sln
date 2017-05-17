@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dafst", "dafst.vcproj", "{620599EB-95E6-4F37-AE6C-7C2E2417517A}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "entry2fst", "..\entry2fst\entry2fst.vcproj", "{56DA8B2F-1CBC-412D-84DA-9D374B41175A}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{620599EB-95E6-4F37-AE6C-7C2E2417517A}.Debug.ActiveCfg = Debug|Win32
+		{620599EB-95E6-4F37-AE6C-7C2E2417517A}.Debug.Build.0 = Debug|Win32
+		{620599EB-95E6-4F37-AE6C-7C2E2417517A}.Release.ActiveCfg = Release|Win32
+		{620599EB-95E6-4F37-AE6C-7C2E2417517A}.Release.Build.0 = Release|Win32
+		{56DA8B2F-1CBC-412D-84DA-9D374B41175A}.Debug.ActiveCfg = Debug|Win32
+		{56DA8B2F-1CBC-412D-84DA-9D374B41175A}.Debug.Build.0 = Debug|Win32
+		{56DA8B2F-1CBC-412D-84DA-9D374B41175A}.Release.ActiveCfg = Release|Win32
+		{56DA8B2F-1CBC-412D-84DA-9D374B41175A}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

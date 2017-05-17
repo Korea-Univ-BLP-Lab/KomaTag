@@ -1,0 +1,96 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+#include <map>
+
+#include "libcommon.h"
+
+#define MAX_KEY_LENGTH 1024
+
+using namespace std;
+
+typedef struct {
+  int size;
+  int from;
+  int length;
+  int value;
+} tab_struct;
+
+typedef map <int, tab_struct>   tabular_map;
+
+void TraverseCallback(void *pParam, int Size, int From, int Length, int Hash)
+{
+  int pos = Tab2Pos(Size, From, Length);     // ASCII용 (1 바이트)
+
+  //if (From % 2) return; // 시작 위치가 홀수이면 2바이트로 시작하는 문자가 아님 (한글 처리를 위해 필요함)
+  
+  (* (tabular_map *)pParam)[pos].size = Size;
+  (* (tabular_map *)pParam)[pos].from = From; 
+  (* (tabular_map *)pParam)[pos].length = Length;
+  (* (tabular_map *)pParam)[pos].value = Hash; 
+  
+  fprintf(stdout, "pos = %d, value = %d\n", pos, Hash);
+}
+
+/*void TraverseCallback(void *pParam, int Size, int From, int Length, int Value)
+{        
+  char *ptr = (char *)pParam;
+  char substr[MAX_KEY_LENGTH];
+  strncpy(substr, ptr+From, Length);
+  substr[Length] = 0;
+         
+  for (int i = 0; i < From; i++) printf(" ");
+  printf("%s (%d, %d) : %d\n", substr, From, Length, Value);
+}        
+*/
+
+int main(int argc, char *argv[])
+{
+  void *x;
+  char s[MAX_KEY_LENGTH];
+  int i, Hash, nItem;
+
+  tabular_map  m;
+
+  if (argc!=2) {
+    fprintf(stderr, "DAFST : key -> hash conversion program\n");
+    fprintf(stderr, " USAGE : %s <FST filename>\n", argv[0]);
+    return 0;
+  }
+
+  if ((x=LoadTransducer(argv[1], NULL))==NULL) {
+    fprintf(stderr, "Load failure\n");
+    return 0;
+  }
+
+  printf("Enter string : ");
+  
+  while (scanf("%s", s)!=EOF) {
+
+    m.clear();
+
+//    String2Tabular(x, s, s, TraverseCallback);
+    //String2Tabular(x, s, &m, TraverseCallback); // 1 byte
+    String2Tabular_2byte(x, s, &m, TraverseCallback); // 2 byte
+  
+   for (tabular_map::iterator itr = m.begin(); itr != m.end(); ++itr) {
+
+     char substr[MAX_KEY_LENGTH];
+     strncpy(substr, s + itr->second.from*2, itr->second.length*2);
+     substr[itr->second.length*2] = 0;
+
+     for (int j = 0; j < itr->second.from; j++) 
+       printf(" ");
+     
+     printf("[%d]%s (%d, %d) : %d\n", itr->first, substr, itr->second.from, itr->second.length, itr->second.value);
+
+   }
+    printf("Enter string : ");
+
+  }
+
+  FreeTransducer(x);
+  return 1;
+}
+

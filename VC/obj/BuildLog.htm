@@ -1,0 +1,81 @@
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=ks_c_5601-1987">
+</head>
+<body>
+<pre>
+<table width=100% bgcolor=#CFCFE5><tr> <td> <font face=굴림 size=+3>
+빌드 로그
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
+<h3>------- 빌드 시작: 프로젝트: KomaTag, 구성: Release|Win32 -------
+</h3>
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=굴림 size=+2>
+명령줄
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>다음 내용이 포함된 "l:\rnd\KomaTag\Vc\obj\RSP000005.rsp" 임시 파일을 만들고 있습니다.
+[
+/O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /FD /EHsc /MT /GS /Fo"../obj/" /Fd"../obj/vc70.pdb" /W3 /c /Wp64 /Zi /TP
+\rnd\KomaTag\src\report.cpp
+\rnd\KomaTag\src\komatag.cpp
+\rnd\KomaTag\src\global_option.cpp
+\rnd\KomaTag\src\get_sentence.cpp
+\rnd\KomaTag\src\env.cpp
+\rnd\KomaTag\src\common.cpp
+]
+"cl.exe @l:\rnd\KomaTag\Vc\obj\RSP000005.rsp /nologo" 명령줄을 만들고 있습니다.
+다음 내용이 포함된 "l:\rnd\KomaTag\Vc\obj\RSP000006.rsp" 임시 파일을 만들고 있습니다.
+[
+/O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /FD /EHsc /MT /GS /Fo"../obj/" /Fd"../obj/vc70.pdb" /W3 /c /Wp64 /Zi /TC
+\rnd\KomaTag\src\getopt.c
+]
+"cl.exe @l:\rnd\KomaTag\Vc\obj\RSP000006.rsp /nologo" 명령줄을 만들고 있습니다.
+다음 내용이 포함된 "l:\rnd\KomaTag\Vc\obj\RSP000007.rsp" 임시 파일을 만들고 있습니다.
+[
+/OUT:"../../bin/KomaTag.exe" /INCREMENTAL:NO /NOLOGO /NODEFAULTLIB:"Nafxcwd.lib Libcmtd.lib" /DELAYLOAD:"OleAcc.dll" /DEBUG /PDB:"../../bin/KomaTag.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /MACHINE:X86 Nafxcwd.lib Libcmtd.lib DelayImp.lib \rnd\KomaTag\lib\NeoHanTag.lib \rnd\KomaTag\lib\ProKoma.lib DelayImp.lib
+\lib\NeoHanTag.lib
+\lib\ProKoma.lib
+\lib\dafst.lib
+\lib\entry2fst.lib
+\lib\hsplit.lib
+\lib\probability_tools.lib
+\rnd\KomaTag\Vc\obj\common.obj
+\rnd\KomaTag\Vc\obj\env.obj
+\rnd\KomaTag\Vc\obj\get_sentence.obj
+\rnd\KomaTag\Vc\obj\getopt.obj
+\rnd\KomaTag\Vc\obj\global_option.obj
+\rnd\KomaTag\Vc\obj\komatag.obj
+\rnd\KomaTag\Vc\obj\report.obj
+]
+"link.exe @l:\rnd\KomaTag\Vc\obj\RSP000007.rsp" 명령줄을 만들고 있습니다.
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=굴림 size=+2>
+출력 창
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>컴파일하고 있습니다.
+report.cpp
+komatag.cpp
+global_option.cpp
+get_sentence.cpp
+env.cpp
+common.cpp
+코드 생성 중...
+컴파일하고 있습니다.
+getopt.c
+링크하고 있습니다.
+LINK : warning LNK4098: 'LIBCMT' defaultlib가 다른 라이브러리와 충돌합니다. /NODEFAULTLIB:library를 사용하십시오.
+Libcmtd.lib(crt0init.obj) : warning LNK4098: 'libc.lib' defaultlib가 다른 라이브러리와 충돌합니다. /NODEFAULTLIB:library를 사용하십시오.
+NeoHanTag.lib(get_morph_tag.obj) : warning LNK4099: 'vc70.pdb' PDB를 '\rnd\KomaTag\lib\NeoHanTag.lib' 또는 'l:\rnd\KomaTag\bin\vc70.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+NeoHanTag.lib(neohantag.obj) : warning LNK4099: 'vc70.pdb' PDB를 '\rnd\KomaTag\lib\NeoHanTag.lib' 또는 'l:\rnd\KomaTag\bin\vc70.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+NeoHanTag.lib(viterbi.obj) : warning LNK4099: 'vc70.pdb' PDB를 '\rnd\KomaTag\lib\NeoHanTag.lib' 또는 'l:\rnd\KomaTag\bin\vc70.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+ProKoma.lib(bfs.obj) : warning LNK4099: 'vc70.pdb' PDB를 '\rnd\KomaTag\lib\ProKoma.lib' 또는 'l:\rnd\KomaTag\bin\vc70.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+ProKoma.lib(phonetic_change.obj) : warning LNK4099: 'vc70.pdb' PDB를 '\rnd\KomaTag\lib\ProKoma.lib' 또는 'l:\rnd\KomaTag\bin\vc70.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+ProKoma.lib(prokoma.obj) : warning LNK4099: 'vc70.pdb' PDB를 '\rnd\KomaTag\lib\ProKoma.lib' 또는 'l:\rnd\KomaTag\bin\vc70.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+ProKoma.lib(prokoma_e.obj) : warning LNK4099: 'vc70.pdb' PDB를 '\rnd\KomaTag\lib\ProKoma.lib' 또는 'l:\rnd\KomaTag\bin\vc70.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+ProKoma.lib(prokoma_m.obj) : warning LNK4099: 'vc70.pdb' PDB를 '\rnd\KomaTag\lib\ProKoma.lib' 또는 'l:\rnd\KomaTag\bin\vc70.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+ProKoma.lib(prokoma_s.obj) : warning LNK4099: 'vc70.pdb' PDB를 '\rnd\KomaTag\lib\ProKoma.lib' 또는 'l:\rnd\KomaTag\bin\vc70.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+ProKoma.lib(triangular_matrix.obj) : warning LNK4099: 'vc70.pdb' PDB를 '\rnd\KomaTag\lib\ProKoma.lib' 또는 'l:\rnd\KomaTag\bin\vc70.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+ProKoma.lib(unit_conversion.obj) : warning LNK4099: 'vc70.pdb' PDB를 '\rnd\KomaTag\lib\ProKoma.lib' 또는 'l:\rnd\KomaTag\bin\vc70.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+hsplit.lib(hsplit.obj) : warning LNK4099: 'vc70.pdb' PDB를 '\lib\hsplit.lib' 또는 'l:\rnd\KomaTag\bin\vc70.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=굴림 size=+2>
+결과
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
+빌드 로그가 "file://l:\rnd\KomaTag\Vc\obj\BuildLog.htm"에 저장되었습니다.
+KomaTag - 0 오류, 14 경고</pre></table><table   width=100% height=20 bgcolor=#CFCFE5><tr><td><font face=굴림 size=+2>
+</font></table></body></html>

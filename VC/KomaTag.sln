@@ -1,0 +1,39 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ProKoma_LIB", "ProKoma_LIB\ProKoma_LIB.vcproj", "{16A15324-31FC-4510-ACD8-BF8A72DE9DBB}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NeoHanTag_LIB", "NeoHanTag_LIB\NeoHanTag_LIB.vcproj", "{4C1E8F56-1FB0-4343-A7ED-974A196F5179}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KomaTag", "KomaTag\KomaTag.vcproj", "{E7B496EC-204E-4611-9241-2C0FD17861D8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{16A15324-31FC-4510-ACD8-BF8A72DE9DBB} = {16A15324-31FC-4510-ACD8-BF8A72DE9DBB}
+		{4C1E8F56-1FB0-4343-A7ED-974A196F5179} = {4C1E8F56-1FB0-4343-A7ED-974A196F5179}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{16A15324-31FC-4510-ACD8-BF8A72DE9DBB}.Debug.ActiveCfg = Debug|Win32
+		{16A15324-31FC-4510-ACD8-BF8A72DE9DBB}.Debug.Build.0 = Debug|Win32
+		{16A15324-31FC-4510-ACD8-BF8A72DE9DBB}.Release.ActiveCfg = Release|Win32
+		{16A15324-31FC-4510-ACD8-BF8A72DE9DBB}.Release.Build.0 = Release|Win32
+		{4C1E8F56-1FB0-4343-A7ED-974A196F5179}.Debug.ActiveCfg = Debug|Win32
+		{4C1E8F56-1FB0-4343-A7ED-974A196F5179}.Debug.Build.0 = Debug|Win32
+		{4C1E8F56-1FB0-4343-A7ED-974A196F5179}.Release.ActiveCfg = Release|Win32
+		{4C1E8F56-1FB0-4343-A7ED-974A196F5179}.Release.Build.0 = Release|Win32
+		{E7B496EC-204E-4611-9241-2C0FD17861D8}.Debug.ActiveCfg = Debug|Win32
+		{E7B496EC-204E-4611-9241-2C0FD17861D8}.Debug.Build.0 = Debug|Win32
+		{E7B496EC-204E-4611-9241-2C0FD17861D8}.Release.ActiveCfg = Release|Win32
+		{E7B496EC-204E-4611-9241-2C0FD17861D8}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

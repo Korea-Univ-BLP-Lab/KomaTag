@@ -1,0 +1,45 @@
+CC = gcc
+#For Optimization
+CFLAGS = -O2
+#For debugging
+#CFLAGS = -g
+
+RM= rm -f
+CP= cp
+
+LIB= ../lib/
+BIN= ../bin/
+MY_BIN=/home/dglee/bin/
+MY_LIB=/home/dglee/lib/
+MY_OBJ=/home/dglee/obj/
+
+.c.o: 
+	$(CC) -c $(CFLAGS) $<
+
+all:	libhsplit.a hsplit cpall
+
+libhsplit.a:    hsplit.o
+	$(AR) rcv $(LIB)$@ hsplit.o
+	ranlib $(LIB)$@
+
+hsplit:	hsplit_test.o  $(LIB)libhsplit.a
+	$(CC) -o $(BIN)$@ hsplit_test.o $(LIB)libhsplit.a
+
+clean: 	rmobj rmlib rmbin
+rmobj:
+	${RM} *.o 
+rmlib:
+	${RM} $(LIB)libhsplit.a
+rmbin:
+	${RM} $(BIN)hsplit
+
+cpall:	cpbin cpobj cplib
+
+cpbin:
+	${CP} $(BIN)hsplit $(MY_BIN)
+
+cpobj:
+	${CP} hsplit.o $(MY_OBJ)
+
+cplib:
+	${CP} $(LIB)libhsplit.a $(MY_LIB)

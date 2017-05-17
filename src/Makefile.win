@@ -1,0 +1,94 @@
+CC = g++
+CFLAGS = -O2
+#CFLAGS = -g
+RM= rm -f
+BIN= ../bin/
+LIB= ../lib/
+MY_BIN= /home/dglee/bin/
+MY_LIB= /home/dglee/lib/
+
+PROB_TOOL_PATH= ../../../tools/probability_tools/src/
+ENTRY2FST_PATH= ../../../tools/dafst/entry2fst/
+DAFST_PATH= ../../../tools/dafst/src/
+
+PROB_TOOL_SRC= $(PROB_TOOL_PATH)fst_probability_io.o \
+               $(PROB_TOOL_PATH)probability_estimation.o \
+               $(PROB_TOOL_PATH)fst_get_probability.o \
+               $(PROB_TOOL_PATH)map_get_probability.o \
+               $(PROB_TOOL_PATH)map_probability_io.o
+
+ENTRY2FST_SRC= $(ENTRY2FST_PATH)get_fst.o \
+               $(ENTRY2FST_PATH)fileio.o \
+               $(ENTRY2FST_PATH)entry2fst.o \
+
+HSPLIT_SRC= ../../../tools/hsplit/src/hsplit.o
+
+DAFST_SRC= $(DAFST_PATH)ANCommon.o \
+           $(DAFST_PATH)FST.o
+
+CP= cp
+.cpp.o: 
+	$(CC) -c $(CFLAGS) $<
+
+all: 	libprokoma.a libneohantag.a komatag komatag-nbest 
+
+libprokoma.a: prokoma.o prokoma_e.o \
+              prokoma_s.o phonetic_change.o \
+              prokoma_m.o \
+              triangular_matrix.o \
+              unit_conversion.o bfs.o 
+	$(AR) rcv $(LIB)$@ prokoma.o prokoma_e.o prokoma_s.o phonetic_change.o prokoma_m.o triangular_matrix.o unit_conversion.o bfs.o 
+	ranlib $(LIB)$@
+
+libneohantag.a: get_morph_tag.o neohantag.o viterbi.o
+	$(AR) rcv $(LIB)$@ get_morph_tag.o neohantag.o viterbi.o
+	ranlib $(LIB)$@
+
+komatag: komatag.o \
+	  common.o env.o get_sentence.o global_option.o \
+	  report.o \
+	  $(HSPLIT_SRC) \
+	  $(DAFST_SRC) \
+	  $(ENTRY2FST_SRC) \
+	  $(PROB_TOOL_SRC)
+	$(CC) -o $(BIN)$@ komatag.o viterbi.o \
+	  common.o env.o get_sentence.o global_option.o \
+    report.o \
+    $(HSPLIT_SRC) \
+    $(DAFST_SRC) \
+	  $(ENTRY2FST_SRC) \
+	  $(PROB_TOOL_SRC) \
+	  $(LIB)libprokoma.a $(LIB)libneohantag.a \
+	  -lm
+
+komatag-nbest: komatag-nbest.o constraint-nbest.o \
+  $(HSPLIT_SRC) \
+  $(PROB_TOOL_SRC) \
+  $(DAFST_SRC) \
+  $(ENTRY2FST_SRC) \
+	common.o get_sentence.o report.o env.o global_option-nbest.o
+	$(CC) -o $(BIN)$@ komatag-nbest.o constraint-nbest.o \
+	common.o get_sentence.o report.o env.o global_option-nbest.o \
+	$(HSPLIT_SRC) \
+	$(DAFST_SRC) \
+	$(ENTRY2FST_SRC) \
+	$(PROB_TOOL_SRC) \
+	$(LIB)libprokoma.a $(LIB)libneohantag.a \
+	-lm
+
+clean: 	rmobj rmbin rmlib
+
+cpbin:
+	${CP} $(BIN)komatag $(MY_BIN)
+	${CP} $(BIN)komatag-nbest $(MY_BIN)
+
+rmobj:
+	${RM} *.o 
+
+rmbin:
+	${RM} $(BIN)komatag
+	${RM} $(BIN)komatag-nbest
+
+rmlib:
+	${RM} $(LIB)libprokoma.a
+	${RM} $(LIB)libneohantag.a
